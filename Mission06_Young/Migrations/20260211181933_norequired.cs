@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿//Migrations file for the database created automatically
+
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 

@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿//Model for the movie entry
+using System.ComponentModel.DataAnnotations;
 
 namespace Mission06_Young.Models
 {
     public class MovieEntry
     {
+
+        //All are entered by the user (except MovieID) in the Movies View, and all are required except Lent To, Notes, and Edited.
         [Key]
         [Required]
         public int MovieID { get; set; }

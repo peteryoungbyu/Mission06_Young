@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@*Peter Young Section 1
+    This is the shared layout by all pages. It has a shared navigation bar and a footer.
+*@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,6 +13,8 @@
     <link rel="stylesheet" href="~/Mission06_Young.styles.css" asp-append-version="true" />
 </head>
 <body>
+
+    @*Shared Navigation bar with links to home, about, and movie entry.*@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -34,12 +39,15 @@
             </div>
         </nav>
     </header>
+
+    @*Renders the body from each view*@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
+    @*Shared footer*@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2026 - Mission 6 - Peter Young 

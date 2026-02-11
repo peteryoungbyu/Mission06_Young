@@ -1,3 +1,5 @@
+//Peter Young Section 1
+
 using Mission06_Young.Models;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+//SQLite information and context
 builder.Services.AddDbContext<MovieEntryContext>(options =>
 {
     options.UseSqlite(builder.Configuration["ConnectionStrings:MoviesConnection"]);
@@ -32,5 +36,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-
+//Runs the app
 app.Run();

@@ -1,4 +1,8 @@
-﻿@{
+﻿@*This is the about Joel page. It has information about Quick Wits Comedy, his Baconsale podcast, and a picture of it.
+    The links will take you to their respective websites.
+*@
+
+@{
     ViewData["Title"] = "Get to know Joel";
 }
 
@@ -9,6 +13,8 @@
             <p class="lead text-muted">Comedian, Podcaster, and Film Collector</p>
         </div>
 
+
+        @*Quick Wits Comedy Section*@
         <div class="row g-4">
             <div class="col-md-6">
                 <div class="card shadow h-100 border-0">
@@ -31,6 +37,7 @@
                 </div>
             </div>
 
+            @*Baconsale section*@
             <div class="col-md-6">
                 <div class="card shadow h-100 border-0">
                     <div class="card-body d-flex flex-column">
@@ -52,7 +59,7 @@
                 </div>
             </div>
         </div>
-
+        @*Or go back to home.*@
         <div class="text-center mt-5">
             <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary btn-lg">
                 <i class="bi bi-house"></i> Back to Home

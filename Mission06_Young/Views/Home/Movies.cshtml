@@ -1,5 +1,6 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    Peter Young Section 1
+    This page is where the user enters the movie to be added to the database
 *@
 @{
     ViewData["Title"] = "Enter Movies";
@@ -13,6 +14,7 @@
                 <h3 class="mb-0">Add Movie to Collection</h3>
             </div>
             <div class="card-body">
+            @* Form for movie entry *@
                 <form method="post">
                     <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
 
@@ -76,6 +78,7 @@
                     </div>
 
                     <div class="d-grid">
+                        @*Submits the form*@
                         <button type="submit" class="btn btn-primary btn-lg">Submit Movie</button>
                     </div>
                 </form>
