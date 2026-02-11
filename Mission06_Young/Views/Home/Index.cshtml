@@ -2,7 +2,27 @@
     ViewData["Title"] = "The Joel Hilton Film Collection";
 }
 
-<div class="text-center">
-    <h1 class="display-4">The Joel Hilton Film Collection</h1>
-    <img src="~/img/joelhilton.jpg" />
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="text-center mb-4">
+            <h1 class="display-3 fw-bold text-primary mb-3">The Joel Hilton Film Collection</h1>
+            <p class="lead text-muted">Welcome to my personal movie database</p>
+        </div>
+        
+        <div class="card shadow-lg border-0">
+            <img src="~/img/joelhilton.jpg" class="card-img-top" alt="Joel Hilton" />
+            <div class="card-body text-center bg-light">
+                <h5 class="card-title">Joel Hilton</h5>
+                <p class="card-text text-muted">Film Enthusiast & Collector</p>
+                <div class="mt-3">
+                    <a asp-controller="Home" asp-action="Movies" class="btn btn-primary btn-lg me-2">
+                        <i class="bi bi-plus-circle"></i> Add Movie
+                    </a>
+                    <a asp-controller="Home" asp-action="About" class="btn btn-outline-secondary btn-lg">
+                        <i class="bi bi-person"></i> About Joel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
