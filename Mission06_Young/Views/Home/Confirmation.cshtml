@@ -2,6 +2,26 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Confirmation";
 }
 @model MovieEntry
-<h1>Thanks for adding the movie @Model.Title</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow text-center">
+            <div class="card-body py-5">
+                <div class="mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                    </svg>
+                </div>
+                <h1 class="card-title text-success mb-3">Success!</h1>
+                <p class="lead">Thanks for adding the movie <strong>@Model.Title</strong></p>
+                <div class="mt-4">
+                    <a asp-controller="Home" asp-action="Movies" class="btn btn-primary me-2">Add Another Movie</a>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Go to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
