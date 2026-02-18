@@ -10,8 +10,8 @@ using Mission06_Young.Models;
 namespace Mission06_Young.Migrations
 {
     [DbContext(typeof(MovieEntryContext))]
-    [Migration("20260211181933_norequired")]
-    partial class norequired
+    [Migration("20260218163649_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,21 +19,38 @@ namespace Mission06_Young.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.3");
 
-            modelBuilder.Entity("Mission06_Young.Models.MovieEntry", b =>
+            modelBuilder.Entity("Mission06_Young.Models.Category", b =>
                 {
-                    b.Property<int>("MovieID")
+                    b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
+                    b.Property<string>("CategoryName")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Mission06_Young.Models.MovieEntry", b =>
+                {
+                    b.Property<int>("MovieId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("CopiedToPlex")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool?>("Edited")
+                    b.Property<bool>("Edited")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LentTo")
@@ -54,9 +71,20 @@ namespace Mission06_Young.Migrations
                     b.Property<int>("Year")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("MovieID");
+                    b.HasKey("MovieId");
+
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("Mission06_Young.Models.MovieEntry", b =>
+                {
+                    b.HasOne("Mission06_Young.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

@@ -17,13 +17,8 @@
             @* Form for movie entry *@
                 <form method="post">
                     <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
-
-                    <div class="mb-3">
-                        <label asp-for="Category" class="form-label">Category: <span class="text-danger">*</span></label>
-                        <input asp-for="Category" class="form-control" />
-                        <span asp-validation-for="Category" class="text-danger"></span>
-                    </div>
-
+                  
+                    <input type="hidden" asp-for="MovieId" />
                     <div class="mb-3">
                         <label asp-for="Title" class="form-label">Title: <span class="text-danger">*</span></label>
                         <input asp-for="Title" class="form-control" />
@@ -31,25 +26,38 @@
                     </div>
 
                     <div class="mb-3">
+                        <label asp-for="CategoryId" class="form-label">Category:</label>
+                        <select asp-for="CategoryId">
+                            <option value="" class="form-select">Select a Category</option>
+                            @foreach (Category c in ViewBag.Categories)
+                            {
+                                <option value="@c.CategoryId" class="form-select">@c.CategoryName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
                         <label asp-for="Year" class="form-label">Year: <span class="text-danger">*</span></label>
-                        <input asp-for="Year" class="form-control" type="number" />
+                        <input asp-for="Year" class="form-control" type="number" min="1888"/>
                         <span asp-validation-for="Year" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Director" class="form-label">Director: <span class="text-danger">*</span></label>
+                        <label asp-for="Director" class="form-label">Director:</label>
                         <input asp-for="Director" class="form-control" />
-                        <span asp-validation-for="Director" class="text-danger"></span>
+                      
                     </div>
 
                     <div class="mb-3">
                         <label asp-for="Rating" class="form-label">Rating: <span class="text-danger">*</span></label>
                         <select asp-for="Rating" class="form-select">
                             <option value="">Select a rating...</option>
-                            <option value="G">G</option>
-                            <option value="PG">PG</option>
-                            <option value="PG-13">PG-13</option>
-                            <option value="R">R</option>
+                            <option selected="@(Model.Rating == "NR")" value="NR">NR</option>
+                            <option selected="@(Model.Rating == "G")" value="G">G</option>
+                            <option selected="@(Model.Rating == "PG")" value="PG">PG</option>
+                            <option selected="@(Model.Rating == "PG-13")" value="PG-13">PG-13</option>
+                            <option selected="@(Model.Rating == "R")" value="R">R</option>
                         </select>
                         <span asp-validation-for="Rating" class="text-danger"></span>
                     </div>
@@ -75,6 +83,17 @@
                         <textarea asp-for="Notes" class="form-control" rows="3" maxlength="25"></textarea>
                     
                         <small class="form-text text-muted">Maximum 25 characters</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="CopiedToPlex" class="form-label">Copied To Plex <span class="text-danger">*</span></label>
+                        <select asp-for="CopiedToPlex" class="form-select">
+                            <option value="">Select...</option>
+                            <option value="false">No</option>
+                            <option value="true">Yes</option>
+                        </select>
+                        <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
+
                     </div>
 
                     <div class="d-grid">
