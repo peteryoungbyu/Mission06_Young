@@ -12,7 +12,7 @@ namespace Mission06_Young.Models
         {
         }
         public DbSet<MovieEntry> Movies { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; } //Categories table
 
     }
 }

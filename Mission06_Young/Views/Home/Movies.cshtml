@@ -18,7 +18,9 @@
                 <form method="post">
                     <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
                   
-                    <input type="hidden" asp-for="MovieId" />
+                    <input type="hidden" asp-for="MovieId" /> @*Hidden MovieId so that it is included here*@
+
+
                     <div class="mb-3">
                         <label asp-for="Title" class="form-label">Title: <span class="text-danger">*</span></label>
                         <input asp-for="Title" class="form-control" />
@@ -27,8 +29,8 @@
 
                     <div class="mb-3">
                         <label asp-for="CategoryId" class="form-label">Category:</label>
-                        <select asp-for="CategoryId">
-                            <option value="" class="form-select">Select a Category</option>
+                        <select asp-for="CategoryId" class="form-select">
+                            <option value="">Select a Category</option>
                             @foreach (Category c in ViewBag.Categories)
                             {
                                 <option value="@c.CategoryId" class="form-select">@c.CategoryName</option>
@@ -50,26 +52,34 @@
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Rating" class="form-label">Rating: <span class="text-danger">*</span></label>
+                        <label asp-for="Rating" class="form-label">
+                            Rating: <span class="text-danger">*</span>
+                        </label>
+
                         <select asp-for="Rating" class="form-select">
                             <option value="">Select a rating...</option>
-                            <option selected="@(Model.Rating == "NR")" value="NR">NR</option>
-                            <option selected="@(Model.Rating == "G")" value="G">G</option>
-                            <option selected="@(Model.Rating == "PG")" value="PG">PG</option>
-                            <option selected="@(Model.Rating == "PG-13")" value="PG-13">PG-13</option>
-                            <option selected="@(Model.Rating == "R")" value="R">R</option>
+                            <option value="NR">NR</option>
+                            <option value="G">G</option>
+                            <option value="PG">PG</option>
+                            <option value="PG-13">PG-13</option>
+                            <option value="R">R</option>
                         </select>
+
                         <span asp-validation-for="Rating" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Edited" class="form-label">Edited:</label>
+                        <label asp-for="Edited" class="form-label">
+                            Edited: <span class="text-danger">*</span>
+                        </label>
+
                         <select asp-for="Edited" class="form-select">
                             <option value="">Select...</option>
                             <option value="false">No</option>
                             <option value="true">Yes</option>
                         </select>
-                        
+
+                        <span asp-validation-for="Edited" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
@@ -86,14 +96,17 @@
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="CopiedToPlex" class="form-label">Copied To Plex <span class="text-danger">*</span></label>
+                        <label asp-for="CopiedToPlex" class="form-label">
+                            Copied To Plex <span class="text-danger">*</span>
+                        </label>
+
                         <select asp-for="CopiedToPlex" class="form-select">
                             <option value="">Select...</option>
                             <option value="false">No</option>
                             <option value="true">Yes</option>
                         </select>
-                        <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
 
+                        <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
                     </div>
 
                     <div class="d-grid">

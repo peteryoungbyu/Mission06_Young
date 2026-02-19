@@ -70,13 +70,15 @@ namespace Mission06_Young.Controllers
         }
 
        
+        //Route for the list of movies
         public IActionResult MoviesList()
         {
             var movies = _context.Movies
                 .OrderBy(x => x.MovieId).ToList();
-            return View(movies);
+            return View(movies); //passes in the movies when rendering view
         }
 
+        //Will render the movie entry view but with the information from the movie to edit
         public IActionResult Edit(int id)
         {
             var recordToEdit = _context.Movies
@@ -88,6 +90,7 @@ namespace Mission06_Young.Controllers
             return View("Movies", recordToEdit);
         }
 
+        // Post route for saving the edited information for that movie
         [HttpPost]
         public IActionResult Edit(MovieEntry updatedInfo)
         {
@@ -97,6 +100,7 @@ namespace Mission06_Young.Controllers
             return RedirectToAction("MoviesList");
         }
 
+        //Renders the delete view for that record
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -105,6 +109,7 @@ namespace Mission06_Young.Controllers
             return View(recordToDelete);
         }
 
+        //Performs the delete action for that record if confirmed
         [HttpPost]
         public IActionResult Delete(MovieEntry movie)
         {
